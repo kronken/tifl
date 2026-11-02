@@ -29,12 +29,14 @@ struct RootView: View {
             }
         }
         .tint(.accentGold)
-        .safeAreaInset(edge: .bottom, spacing: 0) {
+        // Over the content, which leaves room with `tabBarClearance`.
+        .overlay(alignment: .bottom) {
             if !router.isCurrencyPickerOpen {
                 FloatingTabBar(selection: $router.tab) { showAddPurchase = true }
                     .transition(.opacity)
             }
         }
+        .ignoresSafeArea(.keyboard)
         .overlay(alignment: .bottom) {
             ToastView(toast: $router.toast)
                 .padding(.bottom, router.isCurrencyPickerOpen ? 16 : 100)

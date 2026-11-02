@@ -5,10 +5,11 @@ import SwiftData
 /// Debug-only sample spending based on the designs. Enable with the launch
 /// argument `-demoData YES`; it lives in an in-memory store and never touches
 /// real data or iCloud. `-demoEmpty YES` keeps the categories but no purchases,
-/// `-demoNew YES` shows a first launch.
+/// `-demoNew YES` shows a first launch, `-demoShort YES` keeps only the last month.
 enum DemoData {
     static var isEnabled: Bool { UserDefaults.standard.bool(forKey: "demoData") }
     private static var isEmpty: Bool { UserDefaults.standard.bool(forKey: "demoEmpty") }
+    private static var isShort: Bool { UserDefaults.standard.bool(forKey: "demoShort") }
     private static var isNew: Bool { UserDefaults.standard.bool(forKey: "demoNew") }
 
     static func makeContainer() -> ModelContainer {
@@ -57,7 +58,7 @@ enum DemoData {
             seed = (seed &* 1_103_515_245 &+ 12_345) & 0x7FFF_FFFF
             return (seed >> 8) % limit
         }
-        for dayOffset in stride(from: 3, through: 1_400, by: 3) {
+        for dayOffset in stride(from: 3, through: isShort ? 30 : 1_400, by: 3) {
             guard let date = calendar.date(byAdding: .day, value: -dayOffset, to: today) else { continue }
             for _ in 0...next(2) {
                 let index = [0, 0, 0, 1, 1, 2, 3, 4, 5][next(9)]

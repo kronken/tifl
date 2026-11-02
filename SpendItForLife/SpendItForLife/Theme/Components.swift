@@ -1,5 +1,8 @@
 import SwiftUI
 
+/// Room under a tab's scrolling content, so its end clears the floating tab bar.
+let tabBarClearance: CGFloat = 88
+
 /// Corner radii from the design system.
 enum Radius {
     /// Cards and grouped lists.
@@ -165,8 +168,8 @@ struct TabScreen<Content: View>: View {
             }
             .padding(.horizontal, 16)
             .padding(.top, 8)
-            .padding(.bottom, 24)
         }
+        .contentMargins(.bottom, tabBarClearance, for: .scrollContent)
         .scrollIndicators(.hidden)
         .background(.appBackground)
         .toolbarVisibility(.hidden, for: .navigationBar)
@@ -233,6 +236,7 @@ extension View {
             .scrollContentBackground(.hidden)
             .scrollIndicators(.hidden)
             .listSectionSpacing(16)
+            .contentMargins(.bottom, tabBarClearance, for: .scrollContent)
             .background(.appBackground)
             .toolbarVisibility(.hidden, for: .navigationBar)
             .navigationBarTitleDisplayMode(.inline)
