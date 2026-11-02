@@ -255,6 +255,7 @@ private struct PurchaseRow: View {
     }
 }
 
+#if DEBUG
 #Preview {
     NavigationStack { SpendingView() }
         .environment(AppSettings())
@@ -262,3 +263,4 @@ private struct PurchaseRow: View {
         .modelContainer(DemoData.previewContainer())
         .preferredColorScheme(.dark)
 }
+#endif

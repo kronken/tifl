@@ -203,6 +203,7 @@ private struct ToastView: View {
     }
 }
 
+#if DEBUG
 #Preview {
     RootView()
         .environment(AppSettings())
@@ -210,3 +211,4 @@ private struct ToastView: View {
         .modelContainer(DemoData.previewContainer())
         .preferredColorScheme(.dark)
 }
+#endif

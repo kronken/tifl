@@ -318,6 +318,7 @@ struct AddPurchaseSheet: View {
     }
 }
 
+#if DEBUG
 #Preview {
     Text("Spending")
         .sheet(isPresented: .constant(true)) { AddPurchaseSheet(mode: .new) }
@@ -326,3 +327,4 @@ struct AddPurchaseSheet: View {
         .modelContainer(DemoData.previewContainer())
         .preferredColorScheme(.dark)
 }
+#endif

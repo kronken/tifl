@@ -210,6 +210,7 @@ struct SettingsView: View {
     }
 }
 
+#if DEBUG
 #Preview {
     NavigationStack { SettingsView() }
         .environment(AppSettings())
@@ -217,3 +218,4 @@ struct SettingsView: View {
         .modelContainer(DemoData.previewContainer())
         .preferredColorScheme(.dark)
 }
+#endif

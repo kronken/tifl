@@ -96,9 +96,11 @@ struct InsightsView: View {
     }
 }
 
+#if DEBUG
 #Preview {
     NavigationStack { InsightsView() }
         .environment(AppSettings())
         .modelContainer(DemoData.previewContainer())
         .preferredColorScheme(.dark)
 }
+#endif

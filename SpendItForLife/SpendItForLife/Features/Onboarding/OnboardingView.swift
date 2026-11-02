@@ -432,9 +432,11 @@ private struct CategoriesStep<Dots: View>: View {
     }
 }
 
+#if DEBUG
 #Preview {
     OnboardingView()
         .environment(AppSettings())
         .modelContainer(DemoData.inMemoryContainer())
         .preferredColorScheme(.dark)
 }
+#endif

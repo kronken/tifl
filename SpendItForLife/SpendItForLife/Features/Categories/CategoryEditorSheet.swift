@@ -275,9 +275,11 @@ private struct MovePurchasesSheet: View {
     }
 }
 
+#if DEBUG
 #Preview {
     Text("Settings")
         .sheet(isPresented: .constant(true)) { CategoryEditorSheet(mode: .new) }
         .modelContainer(DemoData.previewContainer())
         .preferredColorScheme(.dark)
 }
+#endif
